@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darts Pontszámláló</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Darts Pontszámláló</h1>
+        
+        <div class="add-player-section">
+            <input type="text" id="playerName" placeholder="Játékos neve">
+            <select id="gameMode">
+                <option value="501">501 Pont</option>
+                <option value="301">301 Double Down</option>
+            </select>
+            <button id="addPlayer">Játékos hozzáadása</button>
+        </div>
+
+        <div class="players-container" id="playersContainer">
+            <!-- A játékosok itt jelennek meg -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
