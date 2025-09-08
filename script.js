@@ -1,6 +1,7 @@
 class DartsGame {
     constructor() {
         this.players = this.loadPlayers();
+        this.initTheme();
         this.init();
     }
 
@@ -9,6 +10,7 @@ class DartsGame {
         this.playerNameInput = document.getElementById('playerName');
         this.gameModeSelect = document.getElementById('gameMode');
         this.playersContainer = document.getElementById('playersContainer');
+        this.themeToggleBtn = document.getElementById('themeToggle');
 
         this.addPlayerBtn.addEventListener('click', () => this.addNewPlayer());
         this.playerNameInput.addEventListener('keypress', (e) => {
@@ -16,6 +18,7 @@ class DartsGame {
                 this.addNewPlayer();
             }
         });
+        this.themeToggleBtn.addEventListener('click', () => this.toggleTheme());
 
         // Kezdeti játékosok betöltése
         this.renderAllPlayers();
@@ -136,6 +139,29 @@ class DartsGame {
         this.players.forEach(player => {
             this.playersContainer.appendChild(this.renderPlayer(player));
         });
+    }
+
+    // Theme management methods
+    initTheme() {
+        const savedTheme = localStorage.getItem('dartsTheme') || 'light';
+        this.setTheme(savedTheme);
+    }
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        this.setTheme(newTheme);
+    }
+
+    setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('dartsTheme', theme);
+        
+        // Update the theme toggle icon
+        const themeIcon = document.querySelector('.theme-icon');
+        if (themeIcon) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
     }
 }
 

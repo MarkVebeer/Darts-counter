@@ -1,3 +1,39 @@
+:root {
+    /* Light theme colors */
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --card-bg-color: white;
+    --border-color: #ddd;
+    --input-bg-color: white;
+    --button-bg-color: #4CAF50;
+    --button-hover-color: #45a049;
+    --delete-bg-color: #ff4444;
+    --delete-hover-color: #cc0000;
+    --score-color: #4CAF50;
+    --muted-text-color: #666;
+    --tag-bg-color: #f0f0f0;
+    --shadow-color: rgba(0,0,0,0.1);
+    --divider-color: #eee;
+}
+
+[data-theme="dark"] {
+    /* Dark theme colors */
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --card-bg-color: #2d2d2d;
+    --border-color: #404040;
+    --input-bg-color: #3d3d3d;
+    --button-bg-color: #4CAF50;
+    --button-hover-color: #45a049;
+    --delete-bg-color: #ff4444;
+    --delete-hover-color: #ff6666;
+    --score-color: #66BB6A;
+    --muted-text-color: #b0b0b0;
+    --tag-bg-color: #404040;
+    --shadow-color: rgba(0,0,0,0.3);
+    --divider-color: #404040;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +42,10 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -15,10 +53,48 @@ body {
     margin: 0 auto;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+    color: var(--text-color);
+    margin: 0;
+    flex: 1;
+}
+
+.theme-toggle {
+    background-color: var(--card-bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--button-bg-color);
+    border-color: var(--button-bg-color);
+    transform: scale(1.1);
+}
+
+.theme-icon {
+    transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .theme-icon {
+    transform: rotate(180deg);
 }
 
 .add-player-section {
@@ -28,35 +104,52 @@ h1 {
     margin-bottom: 20px;
 }
 
-input[type="text"], select {
+input[type="text"], input[type="number"], select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 16px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: var(--button-bg-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
 button {
     padding: 12px 20px;
-    background-color: #4CAF50;
+    background-color: var(--button-bg-color);
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: var(--button-hover-color);
+    transform: translateY(-1px);
 }
 
 .player-card {
-    background-color: white;
+    background-color: var(--card-bg-color);
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .player-header {
@@ -75,8 +168,8 @@ button:hover {
 
 .game-mode {
     font-size: 14px;
-    color: #666;
-    background-color: #f0f0f0;
+    color: var(--muted-text-color);
+    background-color: var(--tag-bg-color);
     padding: 4px 8px;
     border-radius: 4px;
 }
@@ -87,13 +180,13 @@ button:hover {
 
 .current-score {
     font-size: 24px;
-    color: #4CAF50;
+    color: var(--score-color);
     font-weight: bold;
 }
 
 .starting-score {
     font-size: 14px;
-    color: #666;
+    color: var(--muted-text-color);
 }
 
 .score-input {
@@ -121,29 +214,46 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--divider-color);
 }
 
 .delete-throw {
-    background-color: #ff4444;
+    background-color: var(--delete-bg-color);
     padding: 8px 12px;
     font-size: 14px;
     width: auto;
 }
 
 .delete-throw:hover {
-    background-color: #cc0000;
+    background-color: var(--delete-hover-color);
 }
 
 .delete-player {
-    background-color: #ff4444;
+    background-color: var(--delete-bg-color);
     padding: 8px 12px;
     font-size: 14px;
     width: auto;
 }
 
 .delete-player:hover {
-    background-color: #cc0000;
+    background-color: var(--delete-hover-color);
+}
+
+@media (max-width: 767px) {
+    .header {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    
+    h1 {
+        margin-right: 60px;
+    }
 }
 
 @media (min-width: 768px) {
