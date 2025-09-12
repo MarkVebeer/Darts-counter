@@ -16,11 +16,16 @@
         </div>
         
         <div class="add-player-section">
-            <input type="text" id="playerName" placeholder="Játékos neve">
-            <select id="gameMode">
-                <option value="501">501 Pont</option>
-                <option value="301">301 Double Down</option>
-            </select>
+            <div class="add-player-row">
+                <input type="text" id="playerName" placeholder="Játékos neve">
+                <div class="custom-select" id="customGameMode">
+                    <div class="select-selected">501 Pont</div>
+                    <div class="select-items select-hide">
+                        <div data-value="501">501 Pont</div>
+                        <div data-value="301">301 Double Down</div>
+                    </div>
+                </div>
+            </div>
             <button id="addPlayer">Játékos hozzáadása</button>
         </div>
 
