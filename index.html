@@ -8,24 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Darts Pontszámláló</h1>
-            <button id="themeToggle" class="theme-toggle" title="Téma váltása">
-                <span class="theme-icon">🌙</span>
-            </button>
-        </div>
+        <h1>Darts Pontszámláló</h1>
         
         <div class="add-player-section">
-            <div class="add-player-row">
-                <input type="text" id="playerName" placeholder="Játékos neve">
-                <div class="custom-select" id="customGameMode">
-                    <div class="select-selected">501 Pont</div>
-                    <div class="select-items select-hide">
-                        <div data-value="501">501 Pont</div>
-                        <div data-value="301">301 Double Down</div>
-                    </div>
-                </div>
-            </div>
+            <input type="text" id="playerName" placeholder="Játékos neve">
+            <select id="gameMode">
+                <option value="501">501 Pont</option>
+                <option value="301">301 Double Down</option>
+            </select>
             <button id="addPlayer">Játékos hozzáadása</button>
         </div>
 
