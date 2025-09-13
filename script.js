@@ -137,8 +137,8 @@ class DartsGame {
             <div class="throws-list">
                 <button class="show-throws-popup" onclick="game.showThrowsPopup(${player.id})">Dobások megjelenítése</button>
                 <span class="throw-stats">
-                    <span style="display: flex; align-items: center; gap: 5px;"><img src="/icons/average.png" alt="Average" style="width: 32px; height: 32px;"> <span style="font-size: 1.5rem; color: #ffffff;">${averageScore}</span></span>
-                    <span style="display: flex; align-items: center; gap: 5px;"><img src="/icons/throw.png" alt="Throw" style="width: 32px; height: 32px;"> <span style="font-size: 1.5rem; color: #ffffff;">${totalThrows}</span></span>
+                    <span style="display: flex; align-items: center; gap: 5px;"><img src="/images/average.png" alt="Average" style="width: 32px; height: 32px;"> <span style="font-size: 1.5rem; color: #ffffff;">${averageScore}</span></span>
+                    <span style="display: flex; align-items: center; gap: 5px;"><img src="/images/throw.png" alt="Throw" style="width: 32px; height: 32px;"> <span style="font-size: 1.5rem; color: #ffffff;">${totalThrows}</span></span>
                 </span>
             </div>
         `;
@@ -213,8 +213,8 @@ class DartsGame {
                                         <td style="padding:8px 16px; text-align:center; color:#E7F2EF;">${index + 1}</td>
                                         <td style="padding:8px 16px; text-align:center; font-weight:bold; color:#A1C2BD;">${score}</td>
                                         <td style="padding:8px 16px; text-align:center;">
-                                            <img src="/icons/pencil.png" alt="Edit" style="cursor:pointer; width:28px; height:28px; margin-right:8px;" onclick="game.editThrowPrompt(${player.id}, ${index}, this)">
-                                            <img src="/icons/trash.png" alt="Delete" style="cursor:pointer; width:28px; height:28px;" onclick="game.deleteThrowPopup(${player.id}, ${index}, this)">
+                                            <img src="/images/pencil.png" alt="Edit" style="cursor:pointer; width:28px; height:28px; margin-right:8px;" onclick="game.editThrowPrompt(${player.id}, ${index}, this)">
+                                            <img src="/images/trash.png" alt="Delete" style="cursor:pointer; width:28px; height:28px;" onclick="game.deleteThrowPopup(${player.id}, ${index}, this)">
                                         </td>
                                     </tr>
                                 `).join('')}
