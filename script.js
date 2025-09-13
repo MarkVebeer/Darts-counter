@@ -31,20 +31,25 @@ class DartsGame {
     }
 
     addNewPlayer() {
-        const playerName = this.playerNameInput.value.trim();
+        const playerNames = this.playerNameInput.value.trim();
         const gameMode = parseInt(this.gameModeSelect.value);
-        if (playerName) {
-            const player = {
-                id: Date.now(),
-                name: playerName,
-                gameMode: gameMode,
-                startingScore: gameMode,
-                currentScore: gameMode,
-                throws: [],
-                isDoubleDown: gameMode === 301
-            };
-            this.players.push(player);
-            this.playersContainer.appendChild(this.renderPlayer(player));
+        if (playerNames) {
+            const namesArray = playerNames.split(',').map(name => name.trim());
+            namesArray.forEach(playerName => {
+                if (playerName) {
+                    const player = {
+                        id: Date.now() + Math.random(), // Ensure unique ID
+                        name: playerName,
+                        gameMode: gameMode,
+                        startingScore: gameMode,
+                        currentScore: gameMode,
+                        throws: [],
+                        isDoubleDown: gameMode === 301
+                    };
+                    this.players.push(player);
+                    this.playersContainer.appendChild(this.renderPlayer(player));
+                }
+            });
             this.playerNameInput.value = '';
             this.savePlayers();
         }
@@ -176,8 +181,8 @@ class DartsGame {
     popup.style.maxHeight = '80vh';
     popup.style.overflowY = 'auto';
 
-        if (window.innerWidth <= 767) {
-            popup.style.width = '100vw'; /* Full width for phones */
+        if (window.innerWidth <= 1024) { // Adjust for tablets and phones
+            popup.style.width = '100vw'; /* Full width for tablets and phones */
             popup.style.maxWidth = 'none'; /* Remove max-width restrictions */
             popup.style.margin = '0'; /* Remove margins */
             popup.style.left = '0'; /* Align to the left edge */
@@ -252,8 +257,6 @@ class DartsGame {
                 tableBody.style.maxHeight = `${tableHeight}em`; // Set maximum height
                 tableBody.style.overflowY = 'auto'; // Enable scrolling
 
-                // Ensure consistent height even if rows are fewer than maxRows
-                tableBody.style.height = `${tableHeight}em`; // Set fixed height
             }
         }
 
